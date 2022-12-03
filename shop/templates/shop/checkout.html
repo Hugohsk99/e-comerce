@@ -12,21 +12,21 @@
 
     </ol>
 </div>
+<!-- // Para colocar os itens no formularios - django-admin -->
 
 <section class="contact" id="contact">
-    <h1 class="text-center">Fill details for Checkout</h1>
+    <h1 class="text-center">Preencha para Finalizar seu pedido</h1>
     <form method="POST" action="" class="form">
         {% csrf_token %}
-        <!-- // to get the items in checkout form -->
         <input class="form-input" type="hidden" name="items" id="items" >  
-        <input class="form-input" type="text" name="name" id="name" placeholder="Enter Your name">
-        <input class="form-input" type="text" name="phone" id="phone" placeholder="Enter Your Phone">
-        <input class="form-input" type="email" name="email" id="email" placeholder="Enter Your email">
+        <input class="form-input" type="text" name="name" id="name" placeholder="Digite seu nome">
+        <input class="form-input" type="text" name="phone" id="phone" placeholder="Digite seu telefone">
+        <input class="form-input" type="email" name="email" id="email" placeholder="Digite seu email">
         <textarea class="form-input" name="address" id="address" cols="2" rows="2"
-            placeholder="Enter Your Full Address"></textarea>
-        <label for="form-input">Amount to be paid</label>
+            placeholder="Digite seu endereço"></textarea>
+        <label for="form-input">Total do carrinho</label>
         <input class="form-input" readonly="" type="text" name="total" id="total"  >
-        <button type="submit" class="btncard">Place Order</button>
+        <button type="submit" class="btncard">Faça seu pedido</button>
     </form>
 </section>
 

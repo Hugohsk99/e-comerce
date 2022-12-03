@@ -25,27 +25,27 @@
 </head>
 
 <body>
-    
+    <!-- Menu -->
     <nav class="navbar ">
         <div class="leftnav">
             <ul class="nav-list-L ">
-                <li><a href="/">Dream Shop</a></li>
+                <li><a href="/">E-Commerce</a></li>
             </ul>
         </div>
 
         <form class="search">
-            <input type="text" name="search1" placeholder="Search for products,brands and more">
-            <button class="searchbtn">Search</button>
+            <input type="text" name="search1" placeholder="Procure por produtos">
+            <button class="searchbtn">Buscar</button>
         </form>
 
         <div class="rightNav">
             <ul class="nav-list-R ">
                 <li><a href="#login">Login</a></li>
-                <li><a href="#tracker">Track Orders</a></li>
-                <li><a href="/checkout">Cart</a><i id="addcart" class="fa fa-shopping-cart"
+                <li><a href="#tracker">Acompanhar</a></li>
+                <li><a href="/checkout">Carrinho</a><i id="addcart" class="fa fa-shopping-cart"
                         style="font-size:18px;color:whitesmoke;" data-container="body" data-trigger="hover"
                         data-toggle="popover" data-placement="bottom" data-html="true"
-                        data-content="Vivamus  lacus vel augue laoreet rutrum faucibus.">(0)</i></li>
+                        data-content="Conteúdo do carinho">(0)</i></li>
 
             </ul>
 
@@ -55,9 +55,10 @@
     {% block body %}
 
     {% endblock %}
+    <!-- adicionar ao carrinho -->
 
     <script>
-        // console.log("Working");
+
         if (localStorage.getItem('cart') == null) {
             var cart = {};
 
@@ -65,12 +66,8 @@
         else {
             cart = JSON.parse(localStorage.getItem('cart'));
         }
-        // let cartt = document.getElementById('cartt')
-        // cartt.addEventListener('click', () => {
-        //     console.log("button click done");
-        // })
+        
         $(document).on('click', '.cartt', function () {
-            // console.log("button click");
             let item_id = this.id.toString();
             console.log(item_id);
 
@@ -92,48 +89,30 @@
             document.getElementById('addcart').innerHTML = "(" + Object.keys(cart).length + ")"
 
         });
-        // popover funtion
-
-        // $(function () {
-        //     $('[data-toggle="popover"]').popover()
-        //     document.getElementById('addcart').setAttribute('data-content','<h5> this is cart</h5>')
-        // })
-
-
 
     </script>
+    <!-- Soma o total da compra -->
 
     <script>
 
-        // funtion to add cart items in popover
         Displaycart(cart);
         function Displaycart(cart) {
             var cartString = "";
-            cartString += "<h5> Items in your Cart</h5>";
+            cartString += "<h5>Itens no seu Carrinho</h5>";
 
             var cartIndex = 1;
             for (var x in cart) {
                 cartString += cartIndex;
-
-                // if (document.getElementById("nm" + x) !== null) {
-
                     cartString += document.getElementById("nm" + x).innerHTML + "Qty:" + cart[x][0] + "</br>";
                     cartIndex += 1;
-                // }
-
-
             }
-
-
             document.getElementById('addcart').setAttribute('data-content', cartString);
             $('[data-toggle="popover"]').popover()
         }
 
-
     </script>
 
-
-    <!-- adding cart item to list in checkout page -->
+    <!-- Mostra os itens adicionados no carinho -->
 
     <script type="text/javascript">
 
@@ -153,20 +132,19 @@
             let price = cart[item][2];
             total = total + cart[item][2];
 
-            itemString = ` <li class = "list-group">Qty:${quantity} ${name}- &#x20B9;
+            itemString = ` <li class = "list-group">Quantidade: ${quantity} ${name}- R$:
     ${price}</li> `
             $('#item_list').append(itemString)
         }
 
-        // to get the total in checkout form
-        totalPrice = ` <li class = "list-group">Your Total Price is &#x20B9;
+        totalPrice = ` <li class = "list-group">Total do pedido: R$:
     ${total} </li> `
         $('#item_list').append(totalPrice);
         $('#total').val(total);
 
 
 
-        // to get the items in checkout form
+ 
         $('#items').val(JSON.stringify(cart));
 
     </script>
@@ -176,3 +154,8 @@
 
 
 </html>
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
